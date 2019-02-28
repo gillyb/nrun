@@ -1,0 +1,16 @@
+{
+  "name": "nrun",
+  "version": "1.0.0",
+  "description": "Run npm scripts easily",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "another-test": "run something",
+    "last-test": "run another something && close something"
+  },
+  "author": "Gilly Barr",
+  "license": "ISC",
+  "dependencies": {
+    "terminal-kit": "^1.27.0"
+  }
+}
