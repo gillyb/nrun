@@ -27,13 +27,15 @@ const runScript = scriptToRun => {
   });
 };
 
-terminal.singleColumnMenu(menuOptions, {
+terminal.hideCursor().singleColumnMenu(menuOptions, {
   selectedLeftPadding: ' > ',
   leftPadding: '   ',
   cancelable: true,
   selectedStyle: terminal.bold,
   submittedStyle: terminal.bold,
 }, (err, response) => {
+
+  terminal.hideCursor(false);
 
   runScript(response.selectedIndex);
 
