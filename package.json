@@ -1,12 +1,13 @@
 {
   "name": "@gillyb/nrun",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Run npm scripts easily",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "another-test": "run something",
-    "last-test": "run another something && close something"
+    "last-test": "run another something && close something",
+    "sleep": "sleep 10"
   },
   "author": "Gilly Barr",
   "license": "ISC",

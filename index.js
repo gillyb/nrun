@@ -25,6 +25,8 @@ const runScript = scriptToRun => {
     terminal('\n\n').white.bold('Process exited with code: ' + code + '\n\n');
     process.exit(code);
   });
+
+  process.stdin.pipe(shell.stdin);
 };
 
 terminal.hideCursor().singleColumnMenu(menuOptions, {
@@ -35,7 +37,7 @@ terminal.hideCursor().singleColumnMenu(menuOptions, {
   submittedStyle: terminal.bold,
 }, (err, response) => {
 
-  terminal.hideCursor(false);
+  terminal.hideCursor(false).grabInput(false);
 
   runScript(response.selectedIndex);
 
