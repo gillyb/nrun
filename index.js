@@ -35,9 +35,32 @@ terminal.hideCursor().singleColumnMenu(menuOptions, {
   cancelable: true,
   selectedStyle: terminal.bold,
   submittedStyle: terminal.bold,
+  keyBindings: {
+    ENTER: 'submit',
+    KP_ENTER: 'submit',
+    UP: 'previous',
+    K: 'previous',
+    k: 'previous',
+    DOWN: 'next',
+    J: 'next',
+    j: 'next',
+    TAB: 'cycleNext',
+    SHIFT_TAB: 'cyclePrevious',
+    HOME: 'first',
+    END: 'last',
+    BACKSPACE: 'cancel',
+    DELETE: 'cancel',
+    ESCAPE: 'escape',
+    CTRL_C: 'escapse'
+  }
 }, (err, response) => {
 
   terminal.hideCursor(false).grabInput(false);
+
+  if (!response.selectedIndex) {
+    process.exit(1);
+    return;
+  }
 
   runScript(response.selectedIndex);
 
