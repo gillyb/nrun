@@ -57,7 +57,7 @@ terminal.hideCursor().singleColumnMenu(menuOptions, {
 
   terminal.hideCursor(false).grabInput(false);
 
-  if (!response.selectedIndex) {
+  if (response.selectedIndex === null || response.selectedIndex === undefined) {
     process.exit(1);
     return;
   }
