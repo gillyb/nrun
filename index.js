@@ -14,19 +14,7 @@ const scripts = Object.keys(packageObject.scripts);
 const menuOptions = scripts.map(s => terminal.str.green(s) + terminal.str.grey(' - ' + packageObject.scripts[s]));
 
 const runScript = scriptToRun => {
-  const shell = spawn('npm run ' + scripts[scriptToRun], { shell: true });
-  shell.stdout.on('data', data => {
-    process.stdout.write(data.toString());
-  });
-  shell.stderr.on('data', data => {
-    process.stderr.write(data.toString());
-  });
-  shell.on('close', code => {
-    terminal('\n\n').white.bold('Process exited with code: ' + code + '\n\n');
-    process.exit(code);
-  });
-
-  process.stdin.pipe(shell.stdin);
+  spawn('npm run ' + scripts[scriptToRun], { shell: true, stdio: 'inherit' });
 };
 
 terminal.hideCursor().singleColumnMenu(menuOptions, {
@@ -51,7 +39,7 @@ terminal.hideCursor().singleColumnMenu(menuOptions, {
     BACKSPACE: 'cancel',
     DELETE: 'cancel',
     ESCAPE: 'escape',
-    CTRL_C: 'escapse'
+    CTRL_C: 'escape'
   }
 }, (err, response) => {
 
