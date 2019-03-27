@@ -1,6 +1,6 @@
 {
   "name": "@gillyb/nrun",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Run npm scripts easily",
   "main": "index.js",
   "scripts": {

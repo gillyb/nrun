@@ -10,6 +10,12 @@ if (!fs.existsSync('./package.json')) {
 const packageFile = fs.readFileSync('./package.json');
 
 const packageObject = JSON.parse(packageFile.toString());
+
+if (!packageObject.scripts) {
+  terminal.yellow('\n\n  This package does not have any defined scripts\n\n');
+  process.exit(0);
+}
+
 const scripts = Object.keys(packageObject.scripts);
 const menuOptions = scripts.map(s => terminal.str.green(s) + terminal.str.grey(' - ' + packageObject.scripts[s]));
 
